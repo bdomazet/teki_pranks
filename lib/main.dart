@@ -9,10 +9,10 @@ import 'features/home/home_screen.dart';
 import 'features/main/main_bloc.dart';
 import 'features/splash/splash_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Paint.enableDithering = true;
-  SystemChrome.setPreferredOrientations(
+  await SystemChrome.setPreferredOrientations(
     <DeviceOrientation>[
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown
