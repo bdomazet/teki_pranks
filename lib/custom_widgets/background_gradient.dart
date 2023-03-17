@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
+import '../utils/constants.dart';
 
 class BackgroundGradient extends StatelessWidget {
   const BackgroundGradient({this.child, Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/constants.dart';
 import '../../custom_widgets/background_gradient.dart';
+import '../../utils/constants.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

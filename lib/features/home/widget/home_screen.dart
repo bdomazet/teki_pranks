@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../constants/constants.dart';
-import '../../custom_widgets/background_gradient.dart';
-import '../../custom_widgets/row_element.dart';
-import 'bloc/home_bloc.dart';
+import '../../../custom_widgets/background_gradient.dart';
+import '../../../custom_widgets/row_element.dart';
+import '../../../utils/constants.dart';
+import '../bloc/home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
