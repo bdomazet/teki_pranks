@@ -8,8 +8,8 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: BackgroundGradient(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
