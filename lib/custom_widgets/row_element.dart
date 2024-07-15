@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class RowElement extends StatefulWidget {
+class RowElement extends StatelessWidget {
   const RowElement({
     required this.onTap,
     required this.image,
@@ -10,53 +10,18 @@ class RowElement extends StatefulWidget {
 
   final String image;
   final Function onTap;
-
-  @override
-  State<RowElement> createState() => _RowElementState();
-}
-
-class _RowElementState extends State<RowElement> with TickerProviderStateMixin {
-  late final AnimationController imageAnimationController = AnimationController(
-    vsync: this,
-    duration: const Duration(
-      milliseconds: 110,
-    ),
-  );
-
-  late final Animatable<double> imageRotationTween = Tween<double>(
-    begin: 0,
-    end: 100,
-  ).chain(CurveTween(curve: Curves.bounceOut));
-
-  double get imageRotation =>
-      imageRotationTween.evaluate(imageAnimationController);
-
-  @override
-  void initState() {
-    imageAnimationController.addListener(() => setState(() {}));
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    imageAnimationController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () async {
+        onTap: () {
           HapticFeedback.lightImpact();
-          widget.onTap();
-          await imageAnimationController.forward();
-          await imageAnimationController.reverse();
+          onTap();
         },
-        child: Transform.rotate(
-          angle: imageRotation,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Image.asset(
-            widget.image,
+            image,
             fit: BoxFit.contain,
           ),
         ),
