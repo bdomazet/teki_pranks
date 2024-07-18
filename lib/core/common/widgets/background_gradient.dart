@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
+import '../../theme/app_palette.dart';
 
 class BackgroundGradient extends StatelessWidget {
-  const BackgroundGradient({this.child, Key? key}) : super(key: key);
+  const BackgroundGradient({this.child, super.key});
   final Widget? child;
 
   @override
@@ -17,8 +17,8 @@ class BackgroundGradient extends StatelessWidget {
           end: Alignment.bottomCenter,
           stops: <double>[0.0, 0.9],
           colors: <Color>[
-            blueColor,
-            yellowColor,
+            AppPalette.blueColor,
+            AppPalette.yellowColor,
           ],
         ),
       ),

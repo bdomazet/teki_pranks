@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../home/widget/home_screen.dart';
-import '../../splash/splash_screen.dart';
+import '../../../../home/presentation/pages/home_page.dart';
+import '../../../splash/splash_screen.dart';
 import '../bloc/teki_pranks_bloc.dart';
 
 class TekiPranks extends StatelessWidget {

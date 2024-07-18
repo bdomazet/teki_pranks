@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../custom_widgets/background_gradient.dart';
-import '../../../custom_widgets/row_element.dart';
-import '../../../utils/constants.dart';
-import '../bloc/home_bloc.dart';
+import '../../../../core/common/widgets/background_gradient.dart';
+import '../../../../core/common/widgets/row_element.dart';
+import '../../../../core/theme/app_images.dart';
+import '../../../../core/theme/app_sounds.dart';
+import '../../../../core/utils/show_snack_bar.dart';
+import '../../presentation/bloc/home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,11 @@ class HomeScreen extends StatelessWidget {
         body: BackgroundGradient(
           child: SafeArea(
             child: BlocConsumer<HomeBloc, HomeState>(
-              listener: (BuildContext context, HomeState state) {},
+              listener: (BuildContext context, HomeState state) {
+                if (state is SoundNotPlayed) {
+                  showSnackBar(context, state.error);
+                }
+              },
               builder: (BuildContext context, HomeState state) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -28,38 +34,17 @@ class HomeScreen extends StatelessWidget {
                         children: <Widget>[
                           RowElement(
                             onTap: () {
-                              BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(smilingPoopSound));
+                              BlocProvider.of<HomeBloc>(context).add(
+                                  PlaySoundEvent(AppSounds.smilingPoopSound));
                             },
-                            image: smilingPoopImage,
+                            image: AppImages.smilingPoopImage,
                           ),
                           RowElement(
                             onTap: () async {
-                              BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(goofyPoopSound));
+                              BlocProvider.of<HomeBloc>(context).add(
+                                  PlaySoundEvent(AppSounds.goofyPoopSound));
                             },
-                            image: goofyPoopImage,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          RowElement(
-                            onTap: () async {
-                              BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(madPoopSound));
-                            },
-                            image: madPoopImage,
-                          ),
-                          RowElement(
-                            onTap: () async {
-                              BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(roflPoopSound));
-                            },
-                            image: roflPoopImage,
+                            image: AppImages.goofyPoopImage,
                           ),
                         ],
                       ),
@@ -71,16 +56,16 @@ class HomeScreen extends StatelessWidget {
                           RowElement(
                             onTap: () async {
                               BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(boredPoopSound));
+                                  .add(PlaySoundEvent(AppSounds.madPoopSound));
                             },
-                            image: boredPoopImage,
+                            image: AppImages.madPoopImage,
                           ),
                           RowElement(
                             onTap: () async {
                               BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(pukingPoopSound));
+                                  .add(PlaySoundEvent(AppSounds.roflPoopSound));
                             },
-                            image: pukingPoopImage,
+                            image: AppImages.roflPoopImage,
                           ),
                         ],
                       ),
@@ -91,17 +76,38 @@ class HomeScreen extends StatelessWidget {
                         children: <Widget>[
                           RowElement(
                             onTap: () async {
-                              BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(angelPoopSound));
+                              BlocProvider.of<HomeBloc>(context).add(
+                                  PlaySoundEvent(AppSounds.boredPoopSound));
                             },
-                            image: angelPoopImage,
+                            image: AppImages.boredPoopImage,
+                          ),
+                          RowElement(
+                            onTap: () async {
+                              BlocProvider.of<HomeBloc>(context).add(
+                                  PlaySoundEvent(AppSounds.pukingPoopSound));
+                            },
+                            image: AppImages.pukingPoopImage,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          RowElement(
+                            onTap: () async {
+                              BlocProvider.of<HomeBloc>(context).add(
+                                  PlaySoundEvent(AppSounds.angelPoopSound));
+                            },
+                            image: AppImages.angelPoopImage,
                           ),
                           RowElement(
                             onTap: () async {
                               BlocProvider.of<HomeBloc>(context)
-                                  .add(PlaySoundEvent(coolPoopSound));
+                                  .add(PlaySoundEvent(AppSounds.coolPoopSound));
                             },
-                            image: coolPoopImage,
+                            image: AppImages.coolPoopImage,
                           ),
                         ],
                       ),
