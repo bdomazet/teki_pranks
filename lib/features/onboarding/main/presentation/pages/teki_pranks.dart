@@ -15,8 +15,7 @@ class TekiPranks extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocConsumer<TekiPranksBloc, TekiPranksState>(
-        listener: (BuildContext context, TekiPranksState state) {},
+      home: BlocBuilder<TekiPranksBloc, TekiPranksState>(
         builder: (BuildContext context, TekiPranksState state) {
           if (state is SplashScreenState) {
             return const SplashScreen();
