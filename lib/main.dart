@@ -16,15 +16,17 @@ void main() async {
     ],
   );
   await initDependencies();
-  runApp(MultiBlocProvider(
-    providers: <BlocProvider<dynamic>>[
-      BlocProvider<TekiPranksBloc>(
-        create: (BuildContext context) => serviceLocator<TekiPranksBloc>(),
-      ),
-      BlocProvider<HomeBloc>(
-        create: (BuildContext context) => serviceLocator<HomeBloc>(),
-      )
-    ],
-    child: const TekiPranks(),
-  ));
+  runApp(
+    MultiBlocProvider(
+      providers: <BlocProvider<dynamic>>[
+        BlocProvider<TekiPranksBloc>(
+          create: (BuildContext context) => serviceLocator<TekiPranksBloc>(),
+        ),
+        BlocProvider<HomeBloc>(
+          create: (BuildContext context) => serviceLocator<HomeBloc>(),
+        )
+      ],
+      child: const TekiPranks(),
+    ),
+  );
 }
